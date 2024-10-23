@@ -10,6 +10,7 @@ const RestaurantsList = (props) => {
 
     //keep restuarant information using history api in react router, use on of the hooks that come with the react-router-Dom library
     let history = useNavigate()
+    //import useNavigate
     // history object will represent history of our browser
 
 
@@ -48,6 +49,11 @@ const RestaurantsList = (props) => {
 
     //pass in empty dependancy array abbove on 'useEffect' so the 'useEffect' function or hook only run when the element mounts and not ever again
     //if not passed in it will run when the element mounts and will also run everytime the element re-renders which might lead to a loop
+
+    const handleRestaurantSelected = (id) => {
+        history(`/restaurants/${id}`);
+    }
+
     return (
         <div>
             <div className="list-group">
@@ -68,7 +74,7 @@ const RestaurantsList = (props) => {
                         {restaurants &&
                          restaurants.map((restaurant) => {
                             return (
-                                <tr key={restaurant.id}>
+                                <tr onClick={() => handleRestaurantSelected(restaurant.id)} key={restaurant.id}>
                                     <td>{restaurant.name}</td>
                                     <td>{restaurant.location}</td>
                                     <td>{"$".repeat(restaurant.price_range)}</td>

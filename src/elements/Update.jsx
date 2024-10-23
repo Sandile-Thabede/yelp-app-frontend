@@ -4,8 +4,9 @@ import { RestaurantContext } from '../context/RestaurantContext';
 import RestaurantFinder from '../apis/RestaurantFinder';
 
 const Update = (props) => {
-    //determines what restaurant we are trying to update by grabbing the id that we imbedded using history
+    //determines what restaurant we are trying to update by grabbing the id that we imbedded in the url using history
     const { id } = useParams();
+    //import hook named useparams
 
     //used history api to send us to this page, can use it to send us back after update
     let history = useNavigate()
