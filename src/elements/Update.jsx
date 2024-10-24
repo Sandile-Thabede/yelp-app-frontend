@@ -30,7 +30,7 @@ const Update = (props) => {
     }, []);
 
     const handleSave = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         const updatedRestaurant = await RestaurantFinder.put(`/${id}`, {
             name,

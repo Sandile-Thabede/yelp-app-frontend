@@ -9,9 +9,9 @@ const AddRestaurant = () => {
 
     const {addRestaurant} = useContext(RestaurantContext);
 
-    const handleSubmit = async (e) => {
+    const handleAdd = async (e) => {
         //prevents page from reloading so that we don't lose our state
-        e.preventDefault()
+        // e.preventDefault()
         try {
             const response = await RestaurantFinder.post("/", {
                 name: name,
@@ -47,7 +47,7 @@ const AddRestaurant = () => {
                         </select>
                     </div>
                     <div className="col d-grid">
-                        <button onClick={handleSubmit} type="submit" className="btn btn-primary">Add</button>
+                        <button onClick={handleAdd} type="submit" className="btn btn-primary">Add</button>
                     </div>
                 </div>
             </form>

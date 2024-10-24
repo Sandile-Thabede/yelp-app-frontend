@@ -26,7 +26,8 @@ const RestaurantsList = (props) => {
         })();
     }, []);
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (e, id) => {
+        e.stopPropagation();
         try {
             const response = await RestaurantFinder.delete(`/${id}`);
 
@@ -39,7 +40,8 @@ const RestaurantsList = (props) => {
         }
     }
 
-    const handleUpdate = async (id) => {
+    const handleUpdate = async (e, id) => {
+        e.stopPropagation();
         try {
             history(`/restaurants/${id}/update`);
         } catch (err) {
@@ -80,13 +82,13 @@ const RestaurantsList = (props) => {
                                     <td>{"$".repeat(restaurant.price_range)}</td>
                                     <td>reviews</td>
                                     <td>
-                                        <button onClick={() => handleUpdate(restaurant.id)} className="button btn btn-warning">Edit</button>
+                                        <button onClick={(e) => handleUpdate(e, restaurant.id)} className="button btn btn-warning">Edit</button>
                                     </td>
                                     <td>
                                         {/* this is how you pass argument into the function using the arrow because we don't want to run the 
                                         function rightaway we want to run it once the button is clicked
                                         pass in reference to funtion and not function itself*/}
-                                        <button onClick={() => handleDelete(restaurant.id)} className="button btn btn-danger">Delete</button>
+                                        <button onClick={(e) => handleDelete(e, restaurant.id)} className="button btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
                             );
@@ -103,7 +105,7 @@ const RestaurantsList = (props) => {
                             <td><div className="button btn btn-warning">Edit</div></td>
                             <td><div className="button btn btn-danger">Delete</div></td>
                         </tr>
-                    </tbody> */}
+                    </tbody>  i.e this is a hard coding example*/}
                 </table>
             </div>
         </div>
